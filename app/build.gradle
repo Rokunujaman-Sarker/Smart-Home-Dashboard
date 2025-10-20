@@ -1,0 +1,51 @@
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+}
+
+android {
+    namespace 'com.example.smarthomefull'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.smarthomefull"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    // Use Firebase BOM to align versions
+    implementation platform('com.google.firebase:firebase-bom:33.4.0')
+
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-database'
+
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    // Google Sign-In (deprecated in favor of Google Identity Services, but still works)
+    implementation 'com.google.android.gms:play-services-auth:21.2.0'
+
+    // OkHttp for ESP32 communication
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+}

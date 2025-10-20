@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "959752953375",
+    "firebase_url": "https://smart-home-dashboard-407-8db57-default-rtdb.firebaseio.com",
+    "project_id": "smart-home-dashboard-407-8db57",
+    "storage_bucket": "smart-home-dashboard-407-8db57.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:959752953375:android:9202b0d5fd3e78d7fdff2a",
+        "android_client_info": {
+          "package_name": "com.example.smarthomefull"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "959752953375-6dfdrfp2mhu84sacu6d0j85kk3k9n4fb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.smarthomefull",
+            "certificate_hash": "aabbccddeeff00112233445566778899aabbccdd"
+          }
+        },
+        {
+          "client_id": "959752953375-thgorhqf2cphmmqq1dpseq0b699ffk1g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3Wl4GQKJKlLEeXn8mBd_UXwHutnnse6Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "959752953375-thgorhqf2cphmmqq1dpseq0b699ffk1g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

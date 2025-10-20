@@ -1,0 +1,9 @@
+<resources>
+    <string-array name="device_types">
+        <item>Light</item>
+        <item>Fan</item>
+        <item>AC</item>
+        <item>TV</item>
+        <item>Fridge</item>
+    </string-array>
+</resources>

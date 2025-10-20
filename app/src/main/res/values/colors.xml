@@ -1,0 +1,6 @@
+<resources>
+    <color name="gradient_start">#34C6FF</color>
+    <color name="gradient_end">#0077FF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="card_bg">#E8F7FF</color>
+</resources>

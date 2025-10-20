@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "com.example.smarthomefull.app-mergeDebugResources-37:/layout/activity_esp32_settings.xml",
+        "source": "com.example.smarthomefull.app-main-40:/layout/activity_esp32_settings.xml"
+    },
+    {
+        "merged": "com.example.smarthomefull.app-mergeDebugResources-37:/layout/activity_registration.xml",
+        "source": "com.example.smarthomefull.app-main-40:/layout/activity_registration.xml"
+    },
+    {
+        "merged": "com.example.smarthomefull.app-mergeDebugResources-37:/layout/dialog_add_device.xml",
+        "source": "com.example.smarthomefull.app-main-40:/layout/dialog_add_device.xml"
+    },
+    {
+        "merged": "com.example.smarthomefull.app-mergeDebugResources-37:/layout/activity_login.xml",
+        "source": "com.example.smarthomefull.app-main-40:/layout/activity_login.xml"
+    },
+    {
+        "merged": "com.example.smarthomefull.app-mergeDebugResources-37:/layout/activity_dashboard.xml",
+        "source": "com.example.smarthomefull.app-main-40:/layout/activity_dashboard.xml"
+    },
+    {
+        "merged": "com.example.smarthomefull.app-mergeDebugResources-37:/layout/activity_room.xml",
+        "source": "com.example.smarthomefull.app-main-40:/layout/activity_room.xml"
+    }
+]
