@@ -2011,10 +2011,12 @@
     <string name="call_notification_incoming_text">Incoming call</string>
     <string name="call_notification_ongoing_text">Ongoing call</string>
     <string name="call_notification_screening_text">Screening an incoming call</string>
+    <string name="cancel_button">Cancel</string>
     <string name="character_counter_content_description">Characters entered %1$d of %2$d</string>
     <string name="character_counter_overflowed_content_description">Character limit exceeded %1$d of %2$d</string>
     <string name="character_counter_pattern" translatable="false">%1$d/%2$d</string>
     <string name="clear_text_end_icon_content_description">Clear text</string>
+    <string name="close_button">Close</string>
     <string msgid="2523291102206661146" name="common_google_play_services_enable_button">Enable</string>
     <string msgid="227660514972886228" name="common_google_play_services_enable_text"><ns2:g id="app_name">%1$s</ns2:g> won\'t work unless you enable Google Play services.</string>
     <string msgid="5122002158466380389" name="common_google_play_services_enable_title">Enable Google Play services</string>
@@ -2035,6 +2037,7 @@
     <string name="common_signin_button_text_long">Sign in with Google</string>
     <string name="confirm_password_hint">Confirm Password</string>
     <string name="copy_toast_msg">Link copied to clipboard</string>
+    <string name="copy_uid_button">Copy UID</string>
     <string name="create_account_subtitle">Sign up to get started</string>
     <string name="create_account_title">Create Account</string>
     <string name="default_web_client_id" translatable="false">959752953375-thgorhqf2cphmmqq1dpseq0b699ffk1g.apps.googleusercontent.com</string>
@@ -2042,6 +2045,8 @@
     <string name="device_label">%1$s - %2$s</string>
     <string name="device_name_hint">Device name</string>
     <string name="dont_have_account">Don\'t have an account?</string>
+    <string name="edit_name_button">Edit Name</string>
+    <string name="edit_name_dialog_title">Edit Name</string>
     <string name="email_hint">Email</string>
     <string name="enter_name">Enter name</string>
     <string description="Screen reader announcement for when a checkbox is on error. [CHAR LIMIT=NONE]" name="error_a11y_label">
@@ -2070,6 +2075,7 @@
     <string name="item_view_role_description">Tab</string>
     <string name="login_button_label">Login</string>
     <string name="login_link">Login</string>
+    <string name="logout_button">Logout</string>
     <string name="m3_exceed_max_badge_text_suffix" translatable="false"><ns2:g example="Some te" id="part of a long text">%1$s</ns2:g><ns2:g example="…" id="suffix">%2$s</ns2:g></string>
     <string name="m3_ref_typeface_brand_medium" translatable="false">sans-serif-medium</string>
     <string name="m3_ref_typeface_brand_regular" translatable="false">sans-serif</string>
@@ -2177,6 +2183,8 @@
     <string name="mtrl_switch_track_path" translatable="false">M0,16 A16,16 0 0,1 16,0 H36 A16,16 0 0,1 36,32 H16 A16,16 0 0,1 0,16</string>
     <string description="Button text to indicate that the widget will ignore the user&apos;s selection [CHAR_LIMIT=16]" name="mtrl_timepicker_cancel">Cancel</string>
     <string description="Button text to indicate that the widget will save the user&apos;s selection [CHAR_LIMIT=16]" name="mtrl_timepicker_confirm">OK</string>
+    <string name="name_hint">Enter your name</string>
+    <string name="name_updated">Name updated successfully!</string>
     <string name="no_data_offline">No data (offline or not logged in)</string>
     <string name="or_text">OR</string>
     <string name="password_hint">Password</string>
@@ -2185,11 +2193,16 @@
     <string name="path_password_eye_mask_strike_through" translatable="false">M2,4.27 L19.73,22 L22.27,19.46 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_eye_mask_visible" translatable="false">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_strike_through" translatable="false">M3.27,4.27 L19.74,20.74</string>
+    <string name="profile_email_label">Email</string>
     <string name="profile_image_desc">Profile image</string>
+    <string name="profile_name_label">Name</string>
+    <string name="profile_title">Profile</string>
+    <string name="profile_uid_label">User ID (UID)</string>
     <string name="project_id" translatable="false">smart-home-dashboard-407-8db57</string>
     <string name="register_button_label">Register</string>
     <string name="register_link">Register</string>
     <string name="room_title">Room</string>
+    <string name="save_button">Save</string>
     <string name="search_menu_title">Search</string>
     <string name="searchbar_scrolling_view_behavior" translatable="false">
     com.google.android.material.search.SearchBar$ScrollingViewBehavior
@@ -2199,6 +2212,7 @@
     <string description="Title of the side sheet&apos;s accessibility pane that is spoken by TalkBack when the side sheet appears on screen. [CHAR_LIMIT=NONE]" name="side_sheet_accessibility_pane_title">Side Sheet</string>
     <string name="side_sheet_behavior" translatable="false">com.google.android.material.sidesheet.SideSheetBehavior</string>
     <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="uid_copied">UID copied!</string>
     <string name="welcome_user_name">Hello, %1$s</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>

@@ -1,5 +1,8 @@
 package com.example.smarthomefull;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -387,22 +390,108 @@ public class DashboardActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user == null) return;
 
-        String info = "Email: " + (user.getEmail() != null ? user.getEmail() : "N/A") + "\n" +
-                     "Name: " + (user.getDisplayName() != null ? user.getDisplayName() : "Not set") + "\n" +
-                     "UID: " + user.getUid();
+        // Inflate the custom dialog layout
+        android.view.LayoutInflater inflater = getLayoutInflater();
+        android.view.View dialogView = inflater.inflate(R.layout.dialog_profile, null);
 
+        // Get references to dialog views
+        TextView profileName = dialogView.findViewById(R.id.profileName);
+        TextView profileEmail = dialogView.findViewById(R.id.profileEmail);
+        TextView profileUid = dialogView.findViewById(R.id.profileUid);
+        android.widget.Button editNameButton = dialogView.findViewById(R.id.editNameButton);
+        android.widget.Button copyUidButton = dialogView.findViewById(R.id.copyUidButton);
+        android.widget.Button logoutButton = dialogView.findViewById(R.id.logoutButton);
+        android.widget.Button closeButton = dialogView.findViewById(R.id.closeButton);
+
+        // Set user information
+        String displayName = user.getDisplayName();
+        String email = user.getEmail();
+        String userId = user.getUid();
+
+        profileName.setText(displayName != null && !displayName.isEmpty() ? displayName : "Not set");
+        profileEmail.setText(email != null ? email : "N/A");
+        profileUid.setText(userId);
+
+        // Create the dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Profile");
-        builder.setMessage(info);
+        builder.setView(dialogView);
+        AlertDialog dialog = builder.create();
 
-        builder.setPositiveButton("Logout", (dialog, which) -> {
+        // Edit Name button click
+        editNameButton.setOnClickListener(v -> {
+            dialog.dismiss();
+            showEditNameDialog();
+        });
+
+        // Copy UID button click
+        copyUidButton.setOnClickListener(v -> {
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("UID", userId);
+            clipboard.setPrimaryClip(clip);
+            Toast.makeText(DashboardActivity.this, R.string.uid_copied, Toast.LENGTH_SHORT).show();
+        });
+
+        // Logout button click
+        logoutButton.setOnClickListener(v -> {
             FirebaseAuth.getInstance().signOut();
             startActivity(new Intent(DashboardActivity.this, LoginActivity.class));
             finish();
         });
 
-        builder.setNegativeButton("Close", null);
-        builder.show();
+        // Close button click
+        closeButton.setOnClickListener(v -> dialog.dismiss());
+
+        dialog.show();
+    }
+
+    void showEditNameDialog() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) return;
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.edit_name_dialog_title);
+
+        final EditText input = new EditText(this);
+        input.setHint(R.string.name_hint);
+        input.setText(user.getDisplayName());
+        input.setPadding(32, 16, 32, 16);
+        if (user.getDisplayName() != null && !user.getDisplayName().isEmpty()) {
+            input.selectAll();
+        }
+        builder.setView(input);
+
+        builder.setPositiveButton(R.string.save_button, null);
+        builder.setNegativeButton(R.string.cancel_button, null);
+
+        AlertDialog dialog = builder.create();
+        dialog.setOnShowListener(dialogInterface -> {
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(view -> {
+                String newName = input.getText().toString().trim();
+                if (newName.isEmpty()) {
+                    Toast.makeText(this, "Please enter a name", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Update user profile with new name
+                com.google.firebase.auth.UserProfileChangeRequest profileUpdates =
+                    new com.google.firebase.auth.UserProfileChangeRequest.Builder()
+                        .setDisplayName(newName)
+                        .build();
+
+                user.updateProfile(profileUpdates)
+                    .addOnSuccessListener(aVoid -> {
+                        Toast.makeText(this, R.string.name_updated, Toast.LENGTH_SHORT).show();
+                        // Update the welcome text with new name
+                        welcomeText.setText(getString(R.string.welcome_user_name, newName));
+                        dialog.dismiss();
+                    })
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(this, "Failed to update name: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    });
+            });
+        });
+
+        dialog.show();
     }
 
     void turnOffAllDevices() {

@@ -34,4 +34,19 @@
     <string name="login_link">Login</string>
     <string name="dont_have_account">Don\'t have an account?</string>
     <string name="register_link">Register</string>
+    <!-- Profile Dialog -->
+    <string name="profile_title">Profile</string>
+    <string name="profile_name_label">Name</string>
+    <string name="profile_email_label">Email</string>
+    <string name="profile_uid_label">User ID (UID)</string>
+    <string name="edit_name_button">Edit Name</string>
+    <string name="copy_uid_button">Copy UID</string>
+    <string name="uid_copied">UID copied!</string>
+    <string name="logout_button">Logout</string>
+    <string name="close_button">Close</string>
+    <string name="edit_name_dialog_title">Edit Name</string>
+    <string name="name_hint">Enter your name</string>
+    <string name="save_button">Save</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="name_updated">Name updated successfully!</string>
 </resources>

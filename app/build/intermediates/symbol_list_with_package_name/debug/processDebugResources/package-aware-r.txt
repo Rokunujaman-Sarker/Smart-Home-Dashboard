@@ -3262,6 +3262,7 @@ id clear_text
 id clip_horizontal
 id clip_vertical
 id clockwise
+id closeButton
 id closest
 id collapseActionView
 id compress
@@ -3274,6 +3275,7 @@ id contentPanel
 id contiguous
 id continuousVelocity
 id coordinator
+id copyUidButton
 id cos
 id counterclockwise
 id cradle
@@ -3320,6 +3322,7 @@ id easeInOut
 id easeOut
 id east
 id edge
+id editNameButton
 id edit_query
 id edit_text_id
 id elastic
@@ -3402,6 +3405,7 @@ id listMode
 id list_item
 id loginBtn
 id loginLink
+id logoutButton
 id m3_side_sheet
 id mainSwitch
 id marquee
@@ -3519,6 +3523,10 @@ id position
 id postLayout
 id pressed
 id profile
+id profileEmail
+id profileName
+id profileTitle
+id profileUid
 id progress_circular
 id progress_horizontal
 id radio
@@ -3812,6 +3820,7 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout dialog_add_device
+layout dialog_profile
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
 layout m3_alert_dialog
@@ -3927,10 +3936,12 @@ string call_notification_hang_up_action
 string call_notification_incoming_text
 string call_notification_ongoing_text
 string call_notification_screening_text
+string cancel_button
 string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern
 string clear_text_end_icon_content_description
+string close_button
 string common_google_play_services_enable_button
 string common_google_play_services_enable_text
 string common_google_play_services_enable_title
@@ -3951,6 +3962,7 @@ string common_signin_button_text
 string common_signin_button_text_long
 string confirm_password_hint
 string copy_toast_msg
+string copy_uid_button
 string create_account_subtitle
 string create_account_title
 string default_web_client_id
@@ -3958,6 +3970,8 @@ string device_default_name
 string device_label
 string device_name_hint
 string dont_have_account
+string edit_name_button
+string edit_name_dialog_title
 string email_hint
 string enter_name
 string error_a11y_label
@@ -3984,6 +3998,7 @@ string icon_content_description
 string item_view_role_description
 string login_button_label
 string login_link
+string logout_button
 string m3_exceed_max_badge_text_suffix
 string m3_ref_typeface_brand_medium
 string m3_ref_typeface_brand_regular
@@ -4085,6 +4100,8 @@ string mtrl_switch_track_decoration_path
 string mtrl_switch_track_path
 string mtrl_timepicker_cancel
 string mtrl_timepicker_confirm
+string name_hint
+string name_updated
 string no_data_offline
 string or_text
 string password_hint
@@ -4093,11 +4110,16 @@ string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
+string profile_email_label
 string profile_image_desc
+string profile_name_label
+string profile_title
+string profile_uid_label
 string project_id
 string register_button_label
 string register_link
 string room_title
+string save_button
 string search_menu_title
 string searchbar_scrolling_view_behavior
 string searchview_clear_text_content_description
@@ -4105,6 +4127,7 @@ string searchview_navigation_content_description
 string side_sheet_accessibility_pane_title
 string side_sheet_behavior
 string status_bar_notification_info_overflow
+string uid_copied
 string welcome_user_name
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
