@@ -26,9 +26,11 @@
         android:extractNativeLibs="false"
         android:icon="@mipmap/ic_launcher"
         android:label="Smart Home Dashboard"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:testOnly="true"
-        android:theme="@style/Theme.App" >
+        android:theme="@style/Theme.App"
+        android:usesCleartextTraffic="true" >
         <activity
             android:name="com.example.smarthomefull.RegistrationActivity"
             android:exported="false" />

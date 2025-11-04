@@ -109,28 +109,26 @@ public class DashboardActivity extends AppCompatActivity {
         loadRooms();
 
         if (firebaseReady && userRef != null) {
-            // Main switch sync
+            // Main switch sync - listen to server state
             userRef.child("mainSwitch").addValueEventListener(new ValueEventListener() {
                 @Override public void onDataChange(@NonNull DataSnapshot snapshot) {
                     String val = snapshot.getValue(String.class);
                     boolean isOn = "ON".equals(val);
 
-                    // Only update UI, don't trigger the listener
+                    // Update UI without triggering the listener
                     mainSwitch.setOnCheckedChangeListener(null);
                     mainSwitch.setChecked(isOn);
 
-                    // Re-attach the listener
+                    // Re-attach the listener for user interactions only
                     mainSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                        if (!isMainSwitchChanging) {
-                            isMainSwitchChanging = true;
+                        // Only update if user interaction (not programmatic change)
+                        if (buttonView.isPressed()) {
                             userRef.child("mainSwitch").setValue(isChecked ? "ON" : "OFF");
 
                             // Turn off all devices when main switch is OFF
                             if (!isChecked) {
                                 turnOffAllDevices();
                             }
-
-                            isMainSwitchChanging = false;
                         }
                     });
                 }
@@ -138,9 +136,6 @@ public class DashboardActivity extends AppCompatActivity {
                     android.util.Log.e("DashboardActivity", "Main switch error: " + error.getMessage());
                 }
             });
-
-            mainSwitch.setOnCheckedChangeListener((buttonView, isChecked) ->
-                userRef.child("mainSwitch").setValue(isChecked?"ON":"OFF"));
         } else {
             mainSwitch.setOnCheckedChangeListener(null);
         }

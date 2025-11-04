@@ -32,7 +32,7 @@ id fabAddDevice
 id fullName
 id googleBtn
 id googleRegisterBtn
-id ipAddressInput
+id helpText
 id loginBtn
 id loginLink
 id logoutButton
@@ -48,7 +48,7 @@ id registerBtn
 id registerButton
 id roomTitle
 id roomsContainer
-id saveButton
+id statusText
 id subtitleRegister
 id termsCheckbox
 id testConnectionButton
@@ -113,6 +113,8 @@ string register_button_label
 string register_link
 string room_title
 string save_button
+string test_firebase_connection
 string uid_copied
 string welcome_user_name
 style Theme.App
+xml network_security_config

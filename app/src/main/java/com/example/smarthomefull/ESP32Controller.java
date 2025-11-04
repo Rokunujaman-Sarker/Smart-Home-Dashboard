@@ -5,13 +5,14 @@ import android.content.SharedPreferences;
 import android.util.Log;
 import okhttp3.*;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 public class ESP32Controller {
     private static final String TAG = "ESP32Controller";
     private static final String PREFS_NAME = "ESP32Prefs";
     private static final String KEY_ESP32_IP = "esp32_ip";
-    private static final int TIMEOUT_SECONDS = 5;
+    private static final int TIMEOUT_SECONDS = 15;  // Increased from 5 to 15 seconds
 
     private OkHttpClient client;
     private String esp32IpAddress;
@@ -19,10 +20,17 @@ public class ESP32Controller {
 
     public ESP32Controller(Context context) {
         this.context = context;
+
+        // Configure OkHttp to allow cleartext (HTTP) traffic
+        ConnectionSpec spec = new ConnectionSpec.Builder(ConnectionSpec.CLEARTEXT)
+                .build();
+
         this.client = new OkHttpClient.Builder()
                 .connectTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
                 .writeTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
                 .readTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
+                .connectionSpecs(Arrays.asList(spec, ConnectionSpec.COMPATIBLE_TLS))
+                .retryOnConnectionFailure(true)
                 .build();
 
         // Load saved IP address
@@ -164,9 +172,8 @@ public class ESP32Controller {
         });
     }
 
-    public interface ESP32Callback {
+     public static interface ESP32Callback {
         void onSuccess(String response);
         void onFailure(String error);
     }
 }
-

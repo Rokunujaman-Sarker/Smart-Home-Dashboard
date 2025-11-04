@@ -30,10 +30,10 @@ public class RoomActivity extends AppCompatActivity {
     String roomDisplayName;
     DatabaseReference roomRef;
     DatabaseReference userRef;
+    DatabaseReference globalDevicesRef; // Global devices reference for syncing
     String uid;
     boolean firebaseReady = false;
-    boolean isMainSwitchOn = true; // Track main switch state
-    private ESP32Controller esp32Controller; // ESP32 controller
+    boolean isMainSwitchOn = true;
 
     @Override protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -42,9 +42,6 @@ public class RoomActivity extends AppCompatActivity {
         devicesContainer = findViewById(R.id.devicesContainer);
         fabAddDevice = findViewById(R.id.fabAddDevice);
         roomTitleText = findViewById(R.id.roomTitle);
-
-        // Initialize ESP32 controller
-        esp32Controller = new ESP32Controller(this);
 
         roomName = getIntent().getStringExtra("roomName");
         roomDisplayName = getIntent().getStringExtra("roomDisplayName");
@@ -75,6 +72,9 @@ public class RoomActivity extends AppCompatActivity {
             uid = user.getUid();
             roomRef = FirebaseDatabase.getInstance().getReference("users").child(uid).child("rooms").child(roomName);
             userRef = FirebaseDatabase.getInstance().getReference("users").child(uid);
+
+            // Global devices reference - shared across all rooms
+            globalDevicesRef = FirebaseDatabase.getInstance().getReference("users").child(uid).child("globalDevices");
 
             // Listen to main switch state
             listenToMainSwitch();
@@ -124,8 +124,21 @@ public class RoomActivity extends AppCompatActivity {
             data.put("state", "OFF");
 
             if(id!=null) {
+                // Save to room
                 roomRef.child(id).setValue(data)
                     .addOnSuccessListener(aVoid -> {
+                        // Also initialize in global devices if not exists
+                        String deviceKey = generateDeviceKey(name);
+                        globalDevicesRef.child(deviceKey).child("state").get().addOnCompleteListener(task -> {
+                            if (task.isSuccessful() && !task.getResult().exists()) {
+                                Map<String, Object> globalData = new HashMap<>();
+                                globalData.put("name", name);
+                                globalData.put("type", type);
+                                globalData.put("state", "OFF");
+                                globalDevicesRef.child(deviceKey).setValue(globalData);
+                            }
+                        });
+
                         Toast.makeText(this, "Device added successfully!", Toast.LENGTH_SHORT).show();
                         ad.dismiss();
                     })
@@ -135,6 +148,15 @@ public class RoomActivity extends AppCompatActivity {
         });
 
         ad.show();
+    }
+
+    // Generate a consistent key for device name (for global sync)
+    private String generateDeviceKey(String deviceName) {
+        if (deviceName == null) return "device";
+        return deviceName.toLowerCase()
+                .replaceAll("[^a-z0-9]", "_")
+                .replaceAll("_+", "_")
+                .replaceAll("^_|_$", "");
     }
 
     void loadDevices(){
@@ -229,21 +251,54 @@ public class RoomActivity extends AppCompatActivity {
         // Right side - switch
         SwitchCompat deviceSwitch = new SwitchCompat(this);
         deviceSwitch.setChecked("ON".equals(state));
-        deviceSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (id != null && roomRef != null) {
-                // Check main switch state before allowing device state change
-                if (isMainSwitchOn) {
-                    // Update Firebase
-                    roomRef.child(id).child("state").setValue(isChecked ? "ON" : "OFF");
 
-                    // Send command to ESP32 for real-time control
-                    controlESP32Device(id, name, isChecked, deviceSwitch);
-                } else {
-                    Toast.makeText(this, "Main switch is OFF. Please turn it ON first.", Toast.LENGTH_SHORT).show();
-                    deviceSwitch.setChecked(false);
+        // FIXED: Listen to global device state instead of room-specific state
+        if (id != null && name != null && globalDevicesRef != null) {
+            String deviceKey = generateDeviceKey(name);
+
+            globalDevicesRef.child(deviceKey).child("state").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    String serverState = snapshot.getValue(String.class);
+                    boolean isOn = "ON".equals(serverState);
+
+                    // Update UI without triggering the listener
+                    deviceSwitch.setOnCheckedChangeListener(null);
+                    deviceSwitch.setChecked(isOn);
+
+                    // Also update local room state to keep in sync
+                    if (roomRef != null) {
+                        roomRef.child(id).child("state").setValue(serverState);
+                    }
+
+                    // Re-attach listener for user interactions
+                    deviceSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                        if (buttonView.isPressed()) {
+                            if (isMainSwitchOn) {
+                                String newState = isChecked ? "ON" : "OFF";
+
+                                // Update global device state (syncs across all rooms)
+                                globalDevicesRef.child(deviceKey).child("state").setValue(newState);
+
+                                // Update local room state
+                                roomRef.child(id).child("state").setValue(newState);
+
+                                // Send command to ESP32
+                                controlESP32Device(id, name, isChecked);
+                            } else {
+                                Toast.makeText(RoomActivity.this, "Main switch is OFF. Please turn it ON first.", Toast.LENGTH_SHORT).show();
+                                buttonView.setChecked(false);
+                            }
+                        }
+                    });
                 }
-            }
-        });
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    android.util.Log.e("RoomActivity", "Error reading device state: " + error.getMessage());
+                }
+            });
+        }
 
         deviceCard.addView(infoLayout);
         deviceCard.addView(deviceSwitch);
@@ -258,35 +313,89 @@ public class RoomActivity extends AppCompatActivity {
     }
 
     /**
-     * Control ESP32 device in real-time
+     * Control ESP32 device - NOW USES FIREBASE FOR REMOTE CONTROL!
      */
-    private void controlESP32Device(String deviceId, String deviceName, boolean isOn, SwitchCompat switchCompat) {
-        if (!esp32Controller.isConfigured()) {
-            Toast.makeText(this, "ESP32 not configured. Firebase sync only.", Toast.LENGTH_SHORT).show();
+    private void controlESP32Device(String deviceId, String deviceName, boolean isOn) {
+        String esp32DeviceId = mapDeviceNameToESP32Id(deviceName);
+        if (esp32DeviceId == null) {
             return;
         }
 
-        // Send command to ESP32
-        esp32Controller.controlDevice(deviceId, isOn, new ESP32Controller.ESP32Callback() {
-            @Override
-            public void onSuccess(String response) {
-                runOnUiThread(() -> {
-                    String status = isOn ? "ON" : "OFF";
-                    Toast.makeText(RoomActivity.this,
-                        deviceName + " turned " + status + " via ESP32",
-                        Toast.LENGTH_SHORT).show();
-                });
-            }
+        String stateStr = isOn ? "ON" : "OFF";
+        DatabaseReference esp32DeviceRef = FirebaseDatabase.getInstance()
+                .getReference("devices")
+                .child(esp32DeviceId)
+                .child("state");
 
-            @Override
-            public void onFailure(String error) {
-                runOnUiThread(() -> {
-                    Toast.makeText(RoomActivity.this,
-                        "ESP32 control failed: " + error + "\n(Synced to Firebase only)",
-                        Toast.LENGTH_LONG).show();
-                });
-            }
-        });
+        esp32DeviceRef.setValue(stateStr)
+            .addOnSuccessListener(aVoid -> {
+                runOnUiThread(() -> Toast.makeText(RoomActivity.this,
+                    deviceName + " " + stateStr,
+                    Toast.LENGTH_SHORT).show());
+            })
+            .addOnFailureListener(e -> {
+                runOnUiThread(() -> Toast.makeText(RoomActivity.this,
+                    "Failed: " + e.getMessage(),
+                    Toast.LENGTH_SHORT).show());
+            });
+    }
+
+    /**
+     * Map device names to ESP32 device IDs
+     * Updated to handle Light-1, Light-2, Light-3 naming convention
+     */
+    private String mapDeviceNameToESP32Id(String deviceName) {
+        if (deviceName == null) return null;
+
+        String lowerName = deviceName.toLowerCase();
+
+        // Exact match for your specific device names
+        if (lowerName.contains("bed") && lowerName.contains("light") && lowerName.contains("1")) {
+            return "light1";
+        }
+        if (lowerName.contains("dining") && lowerName.contains("light") && lowerName.contains("2")) {
+            return "light2";
+        }
+        if (lowerName.contains("washroom") && lowerName.contains("light") && lowerName.contains("3")) {
+            return "light3";
+        }
+
+        // Pattern matching for "Light-1", "Light-2", "Light-3"
+        if (lowerName.matches(".*light[-\\s]*1.*")) {
+            return "light1";
+        }
+        if (lowerName.matches(".*light[-\\s]*2.*")) {
+            return "light2";
+        }
+        if (lowerName.matches(".*light[-\\s]*3.*")) {
+            return "light3";
+        }
+
+        // Generic room-based mappings
+        if (lowerName.contains("living") && lowerName.contains("light")) {
+            return "light1";
+        } else if (lowerName.contains("bedroom") && lowerName.contains("light")) {
+            return "light2";
+        } else if (lowerName.contains("living") && lowerName.contains("fan")) {
+            return "fan1";
+        } else if (lowerName.contains("bedroom") && lowerName.contains("fan")) {
+            return "fan2";
+        } else if (lowerName.contains("plug") && lowerName.contains("1")) {
+            return "plug1";
+        } else if (lowerName.contains("plug") && lowerName.contains("2")) {
+            return "plug2";
+        }
+
+        // Generic fallback mappings
+        if (lowerName.contains("light")) {
+            return "light1";
+        } else if (lowerName.contains("fan")) {
+            return "fan1";
+        } else if (lowerName.contains("plug")) {
+            return "plug1";
+        }
+
+        return null;
     }
 
     void showDeviceOptions(String deviceId, String deviceName) {

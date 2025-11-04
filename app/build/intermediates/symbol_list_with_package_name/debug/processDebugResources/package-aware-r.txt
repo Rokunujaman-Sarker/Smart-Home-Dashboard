@@ -3368,6 +3368,7 @@ id group_divider
 id grouping
 id groups
 id header_title
+id helpText
 id hide_ime_id
 id hideable
 id home
@@ -3387,7 +3388,6 @@ id indeterminate
 id info
 id invisible
 id inward
-id ipAddressInput
 id italic
 id item_touch_helper_previous_elevation
 id jumpToEnd
@@ -3544,7 +3544,6 @@ id roomTitle
 id roomsContainer
 id rounded
 id row_index_key
-id saveButton
 id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
@@ -3601,6 +3600,7 @@ id startToEnd
 id startVertical
 id staticLayout
 id staticPostLayout
+id statusText
 id stop
 id stretch
 id submenuarrow
@@ -4127,6 +4127,7 @@ string searchview_navigation_content_description
 string side_sheet_accessibility_pane_title
 string side_sheet_behavior
 string status_bar_notification_info_overflow
+string test_firebase_connection
 string uid_copied
 string welcome_user_name
 style AlertDialog_AppCompat
@@ -5403,3 +5404,4 @@ styleable ViewStubCompat android_id android_layout android_inflatedId
 styleable ViewTransition android_id SharedValue SharedValueId clearsTag duration ifTagNotSet ifTagSet motionInterpolator motionTarget onStateTransition pathMotionArc setsTag transitionDisable upDuration viewTransitionMode
 styleable include constraintSet
 xml image_share_filepaths
+xml network_security_config

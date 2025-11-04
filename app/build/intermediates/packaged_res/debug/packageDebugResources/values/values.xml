@@ -61,6 +61,7 @@
     <string name="register_link">Register</string>
     <string name="room_title">Room</string>
     <string name="save_button">Save</string>
+    <string name="test_firebase_connection">Firebase Connection</string>
     <string name="uid_copied">UID copied!</string>
     <string name="welcome_user_name">Hello, %1$s</string>
     <style name="Theme.App" parent="Theme.MaterialComponents.DayNight.NoActionBar">

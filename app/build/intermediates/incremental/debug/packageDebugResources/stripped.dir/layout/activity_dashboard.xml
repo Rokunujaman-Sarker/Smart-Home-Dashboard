@@ -40,31 +40,30 @@
                 android:scaleType="centerCrop"/>
         </LinearLayout>
 
-        <LinearLayout
-            android:orientation="horizontal"
+        <Button
+            android:id="@+id/esp32SettingsButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:gravity="center_vertical">
+            android:text="@string/test_firebase_connection"
+            android:textSize="14sp"
+            android:padding="12dp"
+            android:backgroundTint="#FF9800"
+            android:textColor="@color/white"
+            android:layout_marginTop="16dp"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/mainSwitch"
                 android:text="@string/main_power_label"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"/>
-
-            <Button
-                android:id="@+id/esp32SettingsButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="⚙️ ESP32"
-                android:textSize="12sp"
-                android:padding="8dp"
-                android:backgroundTint="#FF9800"
                 android:textColor="@color/white"
-                android:layout_marginStart="8dp"/>
+                android:padding="8dp"/>
         </LinearLayout>
 
         <ScrollView

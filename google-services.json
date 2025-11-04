@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "959752953375-6dfdrfp2mhu84sacu6d0j85kk3k9n4fb.apps.googleusercontent.com",
+          "client_id": "959752953375-snn9ug011su9gs7uiu6vf47o6bb2bqcv.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.smarthomefull",
-            "certificate_hash": "aabbccddeeff00112233445566778899aabbccdd"
+            "certificate_hash": "5a25a15490118ea0cb4a88dc19bee15dc1baa419"
           }
         },
         {

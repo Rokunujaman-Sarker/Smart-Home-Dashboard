@@ -5,8 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
@@ -18,29 +18,28 @@ import java.lang.String;
 
 public final class ActivityEsp32SettingsBinding implements ViewBinding {
   @NonNull
-  private final LinearLayout rootView;
+  private final ScrollView rootView;
 
   @NonNull
-  public final EditText ipAddressInput;
+  public final TextView helpText;
 
   @NonNull
-  public final Button saveButton;
+  public final TextView statusText;
 
   @NonNull
   public final Button testConnectionButton;
 
-  private ActivityEsp32SettingsBinding(@NonNull LinearLayout rootView,
-      @NonNull EditText ipAddressInput, @NonNull Button saveButton,
-      @NonNull Button testConnectionButton) {
+  private ActivityEsp32SettingsBinding(@NonNull ScrollView rootView, @NonNull TextView helpText,
+      @NonNull TextView statusText, @NonNull Button testConnectionButton) {
     this.rootView = rootView;
-    this.ipAddressInput = ipAddressInput;
-    this.saveButton = saveButton;
+    this.helpText = helpText;
+    this.statusText = statusText;
     this.testConnectionButton = testConnectionButton;
   }
 
   @Override
   @NonNull
-  public LinearLayout getRoot() {
+  public ScrollView getRoot() {
     return rootView;
   }
 
@@ -65,15 +64,15 @@ public final class ActivityEsp32SettingsBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.ipAddressInput;
-      EditText ipAddressInput = ViewBindings.findChildViewById(rootView, id);
-      if (ipAddressInput == null) {
+      id = R.id.helpText;
+      TextView helpText = ViewBindings.findChildViewById(rootView, id);
+      if (helpText == null) {
         break missingId;
       }
 
-      id = R.id.saveButton;
-      Button saveButton = ViewBindings.findChildViewById(rootView, id);
-      if (saveButton == null) {
+      id = R.id.statusText;
+      TextView statusText = ViewBindings.findChildViewById(rootView, id);
+      if (statusText == null) {
         break missingId;
       }
 
@@ -83,7 +82,7 @@ public final class ActivityEsp32SettingsBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityEsp32SettingsBinding((LinearLayout) rootView, ipAddressInput, saveButton,
+      return new ActivityEsp32SettingsBinding((ScrollView) rootView, helpText, statusText,
           testConnectionButton);
     }
     String missingId = rootView.getResources().getResourceName(id);
