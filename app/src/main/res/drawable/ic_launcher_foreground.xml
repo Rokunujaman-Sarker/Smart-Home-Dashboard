@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:drawable="@drawable/smart_home_dashboard_logo"
-        android:gravity="center"
-        android:width="144dp"
-        android:height="144dp"/>
-</layer-list>
-
