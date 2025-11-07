@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">959752953375-thgorhqf2cphmmqq1dpseq0b699ffk1g.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://smart-home-dashboard-407-8db57-default-rtdb.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">959752953375</string>
+    <string name="google_api_key" translatable="false">AIzaSyC3Wl4GQKJKlLEeXn8mBd_UXwHutnnse6Y</string>
+    <string name="google_app_id" translatable="false">1:959752953375:android:9202b0d5fd3e78d7fdff2a</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyC3Wl4GQKJKlLEeXn8mBd_UXwHutnnse6Y</string>
+    <string name="google_storage_bucket" translatable="false">smart-home-dashboard-407-8db57.firebasestorage.app</string>
+    <string name="project_id" translatable="false">smart-home-dashboard-407-8db57</string>
+</resources>
