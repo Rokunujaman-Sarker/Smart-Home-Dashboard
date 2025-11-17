@@ -3056,6 +3056,7 @@ int drawable ic_mtrl_chip_close_circle 0x7f0800b1
 int drawable ic_other_sign_in 0x7f0800b2
 int drawable ic_passkey 0x7f0800b3
 int drawable ic_password 0x7f0800b4
+int drawable ic_profile 0x7f080102
 int drawable ic_search_black_24 0x7f0800b5
 int drawable m3_avd_hide_password 0x7f0800b6
 int drawable m3_avd_show_password 0x7f0800b7
@@ -3129,6 +3130,7 @@ int drawable notification_template_icon_bg 0x7f0800fa
 int drawable notification_template_icon_low_bg 0x7f0800fb
 int drawable notification_tile_bg 0x7f0800fc
 int drawable notify_panel_notification_icon_bg 0x7f0800fd
+int drawable profile_circle_bg 0x7f080103
 int drawable smart_home_dashboard_logo 0x7f0800fe
 int drawable test_level_drawable 0x7f0800ff
 int drawable tooltip_frame_dark 0x7f080100

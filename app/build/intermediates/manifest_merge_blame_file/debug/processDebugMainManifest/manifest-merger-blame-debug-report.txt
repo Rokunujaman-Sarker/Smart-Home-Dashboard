@@ -9,11 +9,11 @@
 9        android:targetSdkVersion="34" />
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:3:5-66
-11-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:3:22-64
+11-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:3:5-66
+11-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:3:22-64
 12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-12-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:4:5-78
-12-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:4:22-76
+12-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:4:5-78
+12-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:4:22-76
 13    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 13-->[com.google.android.recaptcha:recaptcha:18.4.0] C:\Users\User\.gradle\caches\8.13\transforms\3aa477dfefd50945219c90ae6260da02\transformed\jetified-recaptcha-18.4.0\AndroidManifest.xml:9:5-98
 13-->[com.google.android.recaptcha:recaptcha:18.4.0] C:\Users\User\.gradle\caches\8.13\transforms\3aa477dfefd50945219c90ae6260da02\transformed\jetified-recaptcha-18.4.0\AndroidManifest.xml:9:22-95
@@ -30,79 +30,79 @@
 19-->[androidx.core:core:1.13.0] C:\Users\User\.gradle\caches\8.13\transforms\8c3c127e285ba1175eea3192e18914ba\transformed\core-1.13.0\AndroidManifest.xml:26:22-94
 20
 21    <application
-21-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:5:5-30:19
+21-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:5:5-30:19
 22        android:name="com.example.smarthomefull.MyApplication"
-22-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:6:9-38
+22-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:6:9-38
 23        android:allowBackup="true"
-23-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:7:9-35
+23-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:7:9-35
 24        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 24-->[androidx.core:core:1.13.0] C:\Users\User\.gradle\caches\8.13\transforms\8c3c127e285ba1175eea3192e18914ba\transformed\core-1.13.0\AndroidManifest.xml:28:18-86
 25        android:debuggable="true"
 26        android:extractNativeLibs="false"
 27        android:icon="@mipmap/ic_launcher"
-27-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:10:9-43
+27-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:10:9-43
 28        android:label="Smart Home Dashboard"
-28-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:8:9-45
+28-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:8:9-45
 29        android:networkSecurityConfig="@xml/network_security_config"
-29-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:12:9-69
+29-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:12:9-69
 30        android:roundIcon="@mipmap/ic_launcher_round"
-30-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:11:9-54
+30-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:11:9-54
 31        android:testOnly="true"
 32        android:theme="@style/Theme.App"
-32-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:9:9-41
+32-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:9:9-41
 33        android:usesCleartextTraffic="true" >
-33-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:13:9-44
+33-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:13:9-44
 34        <activity
-34-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:14:9-107
+34-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:14:9-107
 35            android:name="com.example.smarthomefull.RegistrationActivity"
-35-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:14:19-80
+35-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:14:19-80
 36            android:exported="false" />
-36-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:14:81-105
+36-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:14:81-105
 37        <activity
-37-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:15:9-99
+37-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:15:9-99
 38            android:name="com.example.smarthomefull.RoomActivity"
-38-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:15:19-72
+38-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:15:19-72
 39            android:exported="false" />
-39-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:15:73-97
+39-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:15:73-97
 40        <activity
-40-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:16:9-104
+40-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:16:9-104
 41            android:name="com.example.smarthomefull.DashboardActivity"
-41-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:16:19-77
+41-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:16:19-77
 42            android:exported="false" />
-42-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:16:78-102
+42-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:16:78-102
 43        <activity
-43-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:17:9-108
+43-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:17:9-108
 44            android:name="com.example.smarthomefull.ESP32SettingsActivity"
-44-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:17:19-81
+44-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:17:19-81
 45            android:exported="false" />
-45-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:17:82-106
+45-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:17:82-106
 46        <activity
-46-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:18:9-23:20
+46-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:18:9-23:20
 47            android:name="com.example.smarthomefull.LoginActivity"
-47-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:18:19-73
+47-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:18:19-73
 48            android:exported="true" >
-48-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:18:74-97
+48-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:18:74-97
 49            <intent-filter>
-49-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:19:13-22:29
+49-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:19:13-22:29
 50                <action android:name="android.intent.action.MAIN" />
-50-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:20:17-69
-50-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:20:25-66
+50-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:20:17-69
+50-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:20:25-66
 51
 52                <category android:name="android.intent.category.LAUNCHER" />
-52-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:21:17-77
-52-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:21:27-74
+52-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:21:17-77
+52-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:21:27-74
 53            </intent-filter>
 54        </activity>
 55
 56        <!-- Background service to sync deviceMapping changes to room structure -->
 57        <service
-57-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:26:9-29:40
+57-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:26:9-29:40
 58            android:name="com.example.smarthomefull.DeviceSyncService"
-58-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:27:13-71
+58-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:27:13-71
 59            android:enabled="true"
-59-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:28:13-35
+59-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:28:13-35
 60            android:exported="false" />
-60-->C:\Users\User\Desktop\Smart Home Dashboard\app\src\main\AndroidManifest.xml:29:13-37
+60-->C:\Users\User\Desktop\Smart-Home-Dashboard\app\src\main\AndroidManifest.xml:29:13-37
 61
 62        <activity
 62-->[com.google.firebase:firebase-auth:23.0.0] C:\Users\User\.gradle\caches\8.13\transforms\d00c7034722df02cbebaaf41a6c0298b\transformed\jetified-firebase-auth-23.0.0\AndroidManifest.xml:29:9-46:20

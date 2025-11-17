@@ -12,6 +12,8 @@ drawable edit_text_background
 drawable gradient_bg
 drawable ic_launcher_foreground
 drawable ic_launcher_monochrome
+drawable ic_profile
+drawable profile_circle_bg
 drawable smart_home_dashboard_logo
 id addBtn
 id bg
